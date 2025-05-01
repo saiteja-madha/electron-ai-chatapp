@@ -1,6 +1,8 @@
-# Electron React Starter Template
+# About the App
 
-An Electron application with React, TypeScript, and Tailwind CSS.
+This is an AI-powered chat application template built with Electron and React.
+
+<!-- App screenshot placeholder -->
 
 ![Electron App Screenshot](./assets/screenshot.png)
 

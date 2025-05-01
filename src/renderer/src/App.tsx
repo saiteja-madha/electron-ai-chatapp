@@ -1,12 +1,42 @@
-import { Button } from './components/ui/button'
+import { AppSidebar } from '@/components/app-sidebar'
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbList,
+  BreadcrumbPage
+} from '@/components/ui/breadcrumb'
+import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
+import { Separator } from '@/components/ui/separator'
+import { NavActions } from './components/nav-actions'
 
 function App(): React.JSX.Element {
   return (
-    <div className="flex flex-col items-center justify-center min-h-svh bg-[#202127]">
-      <Button variant="outline" className="cursor-pointer">
-        Click me
-      </Button>
-    </div>
+    <SidebarProvider>
+      <AppSidebar variant="inset" />
+      <SidebarInset>
+        <header className="flex h-14 shrink-0 items-center gap-2">
+          <div className="flex flex-1 items-center gap-2 px-3">
+            <SidebarTrigger />
+            <Separator orientation="vertical" className="mr-2 h-4" />
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbPage className="line-clamp-1">
+                    Project Management & Task Tracking
+                  </BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          </div>
+          <div className="ml-auto px-3">
+            <NavActions />
+          </div>
+        </header>
+        <div className="flex flex-1 flex-col gap-4 px-4 py-5">
+          <div className="mx-auto h-full w-full rounded-xl bg-muted/50" />
+        </div>
+      </SidebarInset>
+    </SidebarProvider>
   )
 }
 
