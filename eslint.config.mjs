@@ -22,10 +22,12 @@ export default tseslint.config(
       'react-hooks': eslintPluginReactHooks,
       'react-refresh': eslintPluginReactRefresh
     },
+
     rules: {
       ...eslintPluginReactHooks.configs.recommended.rules,
       ...eslintPluginReactRefresh.configs.vite.rules
     }
   },
+
   eslintConfigPrettier
 )
