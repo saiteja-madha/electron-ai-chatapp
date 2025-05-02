@@ -4,6 +4,7 @@
     "email": "contact@saitejamadha.dev",
     "avatar": "/avatars/shadcn.jpg"
   },
+
   "sidebarItems": [
     {
       "title": "General Assistant",
@@ -37,5 +38,13 @@
       "title": "AI Assistant",
       "url": "#"
     }
-  ]
+  ],
+
+  "chatSuggestions": [
+    "Tell me a joke",
+    "What's the weather like today?",
+    "Write a poem about cats"
+  ],
+
+  "chatMessages": []
 }
