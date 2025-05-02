@@ -1,4 +1,6 @@
 import React, { Suspense } from 'react'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
@@ -104,6 +106,40 @@ const CodeBlock = ({ children, className, language, ...restProps }: CodeBlockPro
   )
 }
 
+const CodeBlock2 = ({ children, className, language, ...restProps }: CodeBlockProps) => {
+  const code = typeof children === 'string' ? children : childrenTakeAllStringContents(children)
+
+  const preClass = cn(
+    'overflow-x-scroll rounded-md border bg-background/50 p-4 font-mono text-sm [scrollbar-width:none]',
+    className
+  )
+
+  return (
+    <div className="group/code relative mb-4">
+      <Suspense
+        fallback={
+          <pre className={preClass} {...restProps}>
+            {children}
+          </pre>
+        }
+      >
+        <SyntaxHighlighter
+          language={language}
+          style={oneLight} // or oneLight for light mode
+          customStyle={{ borderRadius: '0.375rem', padding: '1rem', fontSize: '0.875rem' }}
+          {...restProps}
+        >
+          {code}
+        </SyntaxHighlighter>
+      </Suspense>
+
+      <div className="invisible absolute right-2 top-2 flex space-x-1 rounded-lg p-1 opacity-0 transition-all duration-200 group-hover/code:visible group-hover/code:opacity-100">
+        <CopyButton content={code} copyMessage="Copied code to clipboard" />
+      </div>
+    </div>
+  )
+}
+
 function childrenTakeAllStringContents(element: any): string {
   if (typeof element === 'string') {
     return element
@@ -134,9 +170,9 @@ const COMPONENTS = {
   code: ({ children, className, node, ...rest }: any) => {
     const match = /language-(\w+)/.exec(className || '')
     return match ? (
-      <CodeBlock className={className} language={match[1]} {...rest}>
+      <CodeBlock2 className={className} language={match[1]} {...rest}>
         {children}
-      </CodeBlock>
+      </CodeBlock2>
     ) : (
       <code
         className={cn(
