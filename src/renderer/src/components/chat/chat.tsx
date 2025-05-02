@@ -207,16 +207,18 @@ Chat.displayName = 'Chat'
 
 export function ChatMessages({
   messages,
+  className,
   children
 }: React.PropsWithChildren<{
   messages: Message[]
+  className?: string
 }>) {
   const { containerRef, scrollToBottom, handleScroll, shouldAutoScroll, handleTouchStart } =
     useAutoScroll([messages])
 
   return (
     <div
-      className="grid grid-cols-1 overflow-y-auto pb-4"
+      className={cn('grid grid-cols-1 overflow-y-auto pb-4', className)}
       ref={containerRef}
       onScroll={handleScroll}
       onTouchStart={handleTouchStart}
