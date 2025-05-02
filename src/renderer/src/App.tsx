@@ -8,7 +8,7 @@ import {
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
 import { Separator } from '@/components/ui/separator'
 import { NavActions } from '@/components/nav-actions'
-import { Chat } from '@/components/chat'
+import { CustomChat } from '@/components/custom-chat'
 
 function App(): React.JSX.Element {
   return (
@@ -33,8 +33,8 @@ function App(): React.JSX.Element {
             <NavActions />
           </div>
         </header>
-        <div className="flex flex-1 flex-col gap-4 px-4 py-5">
-          <Chat />
+        <div className="flex flex-1 flex-col gap-4 px-4 py-5 bg-red-400">
+          <CustomChat />
         </div>
       </SidebarInset>
     </SidebarProvider>
