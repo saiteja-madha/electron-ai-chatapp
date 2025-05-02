@@ -35,6 +35,14 @@ export function CustomChat() {
     event?.preventDefault?.()
     setMessages((prev) => [...prev, { id: String(prev.length + 1), content: input, role: 'user' }])
     setInput('')
+
+    // Simulate a response
+    setTimeout(() => {
+      setMessages((prev) => [
+        ...prev,
+        { id: String(prev.length + 1), content: 'This is a response', role: 'assistant' }
+      ])
+    }, 1000)
   }
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
