@@ -4,7 +4,8 @@ This is an AI-powered chat application template built with Electron and React.
 
 <!-- App screenshot placeholder -->
 
-![Electron App Screenshot](./assets/screenshot.png)
+![Electron App Screenshot](./assets/screenshot_light.png)
+![Electron App Screenshot](./assets/screenshot_dark.png)
 
 ## Recommended IDE Setup
 
