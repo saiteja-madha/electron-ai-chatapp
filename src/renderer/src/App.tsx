@@ -33,7 +33,9 @@ function App(): React.JSX.Element {
             <NavActions />
           </div>
         </header>
-        <CustomChat />
+        <div className="flex flex-1 flex-col max-h-[calc(100vh-4.5rem)] overflow-hidden">
+          <CustomChat />
+        </div>
       </SidebarInset>
     </SidebarProvider>
   )

@@ -11,6 +11,7 @@ import { CopyButton } from '@/components/chat/copy-button'
 import { MessageInput } from '@/components/chat/message-input'
 import { MessageList } from '@/components/chat/message-list'
 import { PromptSuggestions } from '@/components/chat/prompt-suggestions'
+import { ScrollArea } from '@/components/ui/scroll-area'
 
 interface ChatPropsBase {
   handleSubmit: (
@@ -223,7 +224,7 @@ export function ChatMessages({
       onScroll={handleScroll}
       onTouchStart={handleTouchStart}
     >
-      <div className="max-w-full [grid-column:1/1] [grid-row:1/1]">{children}</div>
+      <ScrollArea className="max-w-full [grid-column:1/1] [grid-row:1/1]">{children}</ScrollArea>
 
       {!shouldAutoScroll && (
         <div className="pointer-events-none flex flex-1 items-end justify-end [grid-column:1/1] [grid-row:1/1]">

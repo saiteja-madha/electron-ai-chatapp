@@ -3,7 +3,6 @@ import { ChatContainer, ChatForm, ChatMessages } from '@/components/chat/chat'
 import { MessageInput } from '@/components/chat/message-input'
 import { MessageList } from '@/components/chat/message-list'
 import { PromptSuggestions } from '@/components/chat/prompt-suggestions'
-import { ScrollArea } from '@radix-ui/react-scroll-area'
 
 import { chatMessages, chatSuggestions } from '../assets/data.json'
 
@@ -62,11 +61,9 @@ export function CustomChat() {
       ) : null}
 
       {!isEmpty ? (
-        <ScrollArea className="grid max-h-[calc(100vh-12.5rem)] overflow-hidden">
-          <ChatMessages messages={messages} className="pr-4">
-            <MessageList messages={messages} isTyping={isTyping} />
-          </ChatMessages>
-        </ScrollArea>
+        <ChatMessages messages={messages} className="pr-4">
+          <MessageList messages={messages} isTyping={isTyping} />
+        </ChatMessages>
       ) : null}
 
       <ChatForm
