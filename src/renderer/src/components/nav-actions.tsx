@@ -13,6 +13,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem
 } from '@/components/ui/sidebar'
+import { ModeToggle } from './mode-toggle'
 
 const data = [
   [
@@ -40,7 +41,8 @@ export function NavActions() {
 
   return (
     <div className="flex items-center gap-2 text-sm">
-      <div className="text-muted-foreground hidden font-medium md:inline-block">Edit Oct 08</div>
+      {/* <div className="text-muted-foreground hidden font-medium md:inline-block">Edit Oct 08</div> */}
+      <ModeToggle />
       <Button variant="ghost" size="icon" className="h-7 w-7 cursor-pointer">
         <Star />
       </Button>
