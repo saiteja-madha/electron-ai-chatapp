@@ -12,9 +12,23 @@ import {
   SidebarMenuButton,
   SidebarMenuItem
 } from '@/components/ui/sidebar'
-import { sidebarItems, user } from '../assets/data.json'
+import { user } from '../assets/data.json'
+import type { Chat } from '@/types/chat'
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+type Props = {
+  chats: { id: string; title: string }[]
+  setChatMeta: React.Dispatch<React.SetStateAction<Chat[]>>
+  selectedChatId: string
+  setSelectedChatId: React.Dispatch<React.SetStateAction<string>>
+} & React.ComponentProps<typeof Sidebar>
+
+export function AppSidebar({
+  chats,
+  setChatMeta,
+  selectedChatId,
+  setSelectedChatId,
+  ...props
+}: Props) {
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -30,7 +44,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={sidebarItems} />
+        <NavMain
+          setChatMeta={setChatMeta}
+          chats={chats}
+          selectedChatId={selectedChatId}
+          setSelectedChatId={setSelectedChatId}
+        />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={user} />

@@ -5,46 +5,37 @@
     "avatar": "/avatars/shadcn.jpg"
   },
 
-  "sidebarItems": [
-    {
-      "title": "General Assistant",
-      "url": "#"
-    },
-    {
-      "title": "Code Helper",
-      "url": "#"
-    },
-    {
-      "title": "Data Analyst",
-      "url": "#"
-    },
-    {
-      "title": "Creative Writing",
-      "url": "#"
-    },
-    {
-      "title": "Meeting Assistant",
-      "url": "#"
-    },
-    {
-      "title": "Task Manager",
-      "url": "#"
-    },
-    {
-      "title": "Chatbot",
-      "url": "#"
-    },
-    {
-      "title": "AI Assistant",
-      "url": "#"
-    }
-  ],
-
   "chatSuggestions": [
     "Tell me a joke",
     "What's the weather like today?",
     "Write a poem about cats"
   ],
 
-  "chatMessages": []
+  "chats": [
+    { "id": "1", "title": "General Assistant" },
+    { "id": "2", "title": "Code Helper" },
+    { "id": "3", "title": "Data Analyst" },
+    { "id": "4", "title": "Creative Writing" },
+    { "id": "5", "title": "Meeting Assistant" },
+    { "id": "6", "title": "Task Manager" },
+    { "id": "7", "title": "Chatbot" },
+    { "id": "8", "title": "AI Assistant" }
+  ],
+
+  "chatMessages": [
+    {
+      "id": "1",
+      "messages": [
+        { "id": "1", "role": "user", "content": "Hello!" },
+        { "id": "2", "role": "assistant", "content": "Hi! How can I help you today?" }
+      ]
+    },
+    {
+      "id": "2",
+      "messages": [
+        { "id": "1", "role": "user", "content": "Can you help me with code?" },
+        { "id": "2", "role": "assistant", "content": "Of course! What do you need help with?" }
+      ]
+    }
+  ]
 }

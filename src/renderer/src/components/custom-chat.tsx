@@ -1,20 +1,33 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ChatContainer, ChatForm, ChatMessages } from '@/components/chat/chat'
 import { MessageInput } from '@/components/chat/message-input'
 import { MessageList } from '@/components/chat/message-list'
 import { PromptSuggestions } from '@/components/chat/prompt-suggestions'
-
 import { chatMessages, chatSuggestions } from '../assets/data.json'
 
-export function CustomChat() {
+interface CustomChatProps {
+  selectedChatId: string
+}
+
+export function CustomChat({ selectedChatId }: CustomChatProps) {
   const [input, setInput] = useState('')
-  const [messages, setMessages] = useState(
-    chatMessages.map((message) => ({
-      id: String(message.id),
-      content: message.content,
-      role: message.role
-    }))
-  )
+  const [messages, setMessages] = useState<Array<{ id: string; content: string; role: string }>>([])
+
+  useEffect(() => {
+    const selectedChat = chatMessages.find((chat) => chat.id === selectedChatId)
+    if (selectedChat) {
+      setMessages(
+        selectedChat.messages.map((message) => ({
+          id: String(message.id),
+          content: message.content,
+          role: message.role
+        }))
+      )
+    } else {
+      setMessages([])
+    }
+  }, [selectedChatId])
+
   const lastMessage = messages.at(-1)
   const isEmpty = messages.length === 0
   const isTyping = lastMessage?.role === 'user'
@@ -39,7 +52,11 @@ export function CustomChat() {
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
-        { id: String(prev.length + 1), content: 'This is a response', role: 'assistant' }
+        {
+          id: String(prev.length + 1),
+          content: 'This is a response for\n```md\n' + input + '\n```',
+          role: 'assistant'
+        }
       ])
     }, 1000)
   }
